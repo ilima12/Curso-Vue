@@ -1,6 +1,8 @@
 <template>
     <div>
-        <button @click="primeiro($event), segundo($event)">Ativar mútiplos eventos</button>
+        <button @click="primeiro(txt1, $event), segundo(txt2, $event), terceiro()">Ativar mútiplos eventos
+        </button>
+
         <p>{{ multiplos_eventos }}</p>
     </div>
 </template>
@@ -9,17 +11,20 @@ export default {
     name: 'MultiplosEventos',
     data() {
         return {
-            multiplos_eventos: ""
+            multiplos_eventos: "",
+            txt1: "Primeiro evento",
+            txt2: "Segundo evento"
         }
     },
     methods: {
-        primeiro(e) {
-
-
-            this.multiplos_eventos = "Primeiro evento ativado!"
+        primeiro(txt, e) {
+            this.multiplos_eventos = txt;
         },
-        segundo(e) {
-            setTimeout(() => this.multiplos_eventos = "Segundo evento", 500)
+        segundo(txt, e) {
+            setTimeout(() => this.multiplos_eventos = txt, 500)
+        },
+        terceiro () {
+            setTimeout(() => this.multiplos_eventos = "", 1500)
         }
     }
 }
